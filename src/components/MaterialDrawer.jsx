@@ -63,6 +63,8 @@ export default function TemporaryDrawer() {
     );
 
     return (
+        <>
+        <h2>Material Drawer</h2>
         <div>
             {['left', 'right', 'top', 'bottom'].map((anchor) => (
                 <React.Fragment key={anchor}>
@@ -77,5 +79,6 @@ export default function TemporaryDrawer() {
                 </React.Fragment>
             ))}
         </div>
+        </>
     );
 }

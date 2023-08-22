@@ -8,6 +8,8 @@ import Typography from '@mui/material/Typography';
 
 export default function MediaCard() {
   return (
+    <>
+    <h2>Media Card</h2>
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 140 }}
@@ -28,5 +30,6 @@ export default function MediaCard() {
         <Button size="small">Learn More</Button>
       </CardActions>
     </Card>
+    </>
   );
 }
