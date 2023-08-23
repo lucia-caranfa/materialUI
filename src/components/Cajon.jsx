@@ -4,15 +4,16 @@ import Listas from './Listas'
 
 const estilos = makeStyles(theme => ({
     drawer: {
+        [theme.breakpoints.up('sm')]: {
         width:240,
-        flexShrink:0,
+        flexShrink:0,}
     },
     drawerPaper: {
         width:240,
     }
 }))
 
-const Cajon = () => {
+const Cajon = (props) => {
 
     const classes = estilos();
 
@@ -20,9 +21,11 @@ const Cajon = () => {
 
     <div>
     <Drawer className={classes.drawer} 
-    variant='permanent'
     classes={{paper: classes.drawerPaper}}
     anchor='left'
+    variant={props.variant}
+    open={props.open}
+    onClose={props.onClose ? props.onClose : null}
     >
     <Toolbar/>
     <Divider/>

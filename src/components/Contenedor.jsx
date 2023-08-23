@@ -1,7 +1,8 @@
 import React from 'react'
-import { Toolbar, makeStyles } from '@material-ui/core'
+import { Hidden, Toolbar, makeStyles } from '@material-ui/core'
 import NavBar from './NavBar';
 import Cajon from './Cajon';
+import Cajita from './Cajita';
 
 const estilos = makeStyles(theme => ({
     root: {
@@ -17,18 +18,29 @@ const estilos = makeStyles(theme => ({
 const Contenedor = () => {
     const classes = estilos();
 
+    const [abrir,setAbrir] = React.useState(false)
+    
+    const accionAbrir = () => { setAbrir(!abrir)}
+
     return (
         <div className={classes.root}>
-            <NavBar />
-            <Cajon/>
+            <NavBar accionAbrir={accionAbrir}/>
+            <Hidden xsDown>
+            <Cajon 
+            variant ='permanent' 
+            open = {true}
+            />
+            </Hidden>
+            <Hidden smUp>
+            <Cajon 
+            variant ='temporary' 
+            open = {abrir}
+            onClose = { accionAbrir }
+            />
+            </Hidden>
             <div className={classes.content}>
                 <Toolbar />
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis quaerat eaque ad modi unde ex incidunt quos quidem, fugit inventore optio dolorem aut ipsa sapiente soluta explicabo vitae quia.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis quaerat eaque ad modi unde ex incidunt quos quidem, fugit inventore optio dolorem aut ipsa sapiente soluta explicabo vitae quia.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis quaerat eaque ad modi unde ex incidunt quos quidem, fugit inventore optio dolorem aut ipsa sapiente soluta explicabo vitae quia.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis quaerat eaque ad modi unde ex incidunt quos quidem, fugit inventore optio dolorem aut ipsa sapiente soluta explicabo vitae quia.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis quaerat eaque ad modi unde ex incidunt quos quidem, fugit inventore optio dolorem aut ipsa sapiente soluta explicabo vitae quia.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima debitis quaerat eaque ad modi unde ex incidunt quos quidem, fugit inventore optio dolorem aut ipsa sapiente soluta explicabo vitae quia.
+                <Cajita/>
             </div>
         </div>
     )
